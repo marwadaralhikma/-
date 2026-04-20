@@ -292,8 +292,23 @@
         document.getElementById('retentionInput').required = show;
     }
 
+    // دالة محسنة لمسح البيانات بشكل كامل
     function resetForm() {
-        location.reload();
+        const form = document.getElementById('mainForm');
+        form.reset(); // مسح كافة الحقول الافتراضية
+        
+        // مسح الحقول التي قد لا تمسح بـ reset العادي
+        document.getElementById('retentionBox').classList.add('hidden');
+        document.getElementById('retentionInput').required = false;
+        
+        // إخفاء رسالة النجاح وإظهار شاشة الاختيار
+        document.getElementById('successMsg').classList.add('hidden');
+        document.getElementById('mainForm').classList.add('hidden');
+        document.getElementById('backBtn').classList.add('hidden');
+        document.getElementById('selectionArea').classList.remove('hidden');
+        
+        // التمرير للأعلى
+        window.scrollTo(0, 0);
     }
 
     document.querySelectorAll('.phone-input').forEach(input => {
